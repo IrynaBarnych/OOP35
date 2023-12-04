@@ -114,7 +114,7 @@ q = Queue()
 q.enqueue(1)
 q.enqueue(2)
 q.enqueue(3)
-print(q)
+print(q.data)
 
 print("Dequeue:", q.dequeue())  # Видалення елемента з черги
 print("Size of the queue:", q.size())  # Розмір черги
