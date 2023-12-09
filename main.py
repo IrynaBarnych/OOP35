@@ -22,23 +22,24 @@ class PriorityQueue:
 
     def enqueue(self, item):
         if not self.is_full():
-            self.queue.append(item)
-            print(f"Елемент {item} додано до черги")
+            priority = int(input("Введіть пріорітет: "))
+            self.queue.append((item, priority))
+            print(f"Елемент {item} з пріорітетом {priority} додано до черги")
         else:
             print("Черга вже заповнена. Неможливо додати новий елемент.")
 
     def dequeue(self):
         if not self.is_empty():
-            item = self.queue.pop(0)
-            print(f"Елемент {item} вилучено з черги")
+            item, priority = self.queue.pop(0)
+            print(f"Елемент {item} з пріорітетом {priority} вилучено з черги")
         else:
             print("Черга порожня. Неможливо вилучити елемент.")
 
     def show(self):
         if not self.is_empty():
             print("Елементи в черзі:")
-            for item in self.queue:
-                print(f"Елемент {item}")
+            for item, priority in self.queue:
+                print(f"Елемент {item} з пріорітетом {priority}")
         else:
             print("Черга порожня")
 
