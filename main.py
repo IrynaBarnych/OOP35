@@ -143,6 +143,5 @@ def main():
             break
         else:
             print("Невірний вибір. Спробуйте ще раз.")
-
 if __name__ == "__main__":
     main()
