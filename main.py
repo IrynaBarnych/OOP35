@@ -39,7 +39,8 @@ class ServerQueue:
             request.timestamp = timestamp
             self.stats_queue.append((request.user_login, timestamp))
             print(
-                f"Обробка запиту від користувача {request.user_login} з часом {timestamp} та пріоритетом {request.priority}.")
+                f"Обробка запиту від користувача {request.user_login} з часом {timestamp} "
+                f"та пріоритетом {request.priority}.")
 
         self.request_queue.clear()
 
@@ -49,7 +50,6 @@ class ServerQueue:
             print(f"Користувач {user_login}: {timestamp}")
 
 
-# Приклад використання:
 server = ServerQueue()
 server.add_request("user1", 2)
 server.add_request("user2", 1)
