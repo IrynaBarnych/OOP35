@@ -1,21 +1,15 @@
-"""Завдання 2
-Створіть клас черги з пріоритетами для роботи із
-символьними значеннями.
-Ви маєте створити реалізації для операцій над елементами черги:
-■ IsEmpty — перевірка, чи черга пуста;
-■ IsFull — перевірка черги на заповнення;
-■ InsertWithPriority — додати елемент з пріоритетом у
-чергу;
- PullHighestPriorityElement — видалення елемента з
-найвищим пріоритетом із черги;
-■ Peek — повернення найбільшого за пріоритетом елемента.
- Зверніть увагу, що елемент не видаляється з
-черги;
-■ Show — відображення на екрані всіх елементів черги.
-Показуючи елемент, також необхідно вказати і його
-пріоритет.
-На старті додатка відобразіть меню, в якому користувач
- може вибрати необхідну операцію."""
+# Завдання 1
+# Створіть клас черги для роботи із символьними значеннями. Ви маєте створити реалізації для операцій над
+# елементами:
+# ■ IsEmpty — перевірка, чи черга пуста;
+# ■ IsFull — перевірка черги на заповнення;
+# ■ Enqueue — додати новий елемент до черги;
+# ■ Dequeue — видалення елемента з черги;
+# ■ Show — відображення на екрані всіх елементів черги.
+# На старті додатка відобразіть меню, в якому користувач може вибрати необхідну операцію.
+
+
+
 class PriorityQueue:
     def __init__(self, capacity):
         self.capacity = capacity
@@ -27,27 +21,15 @@ class PriorityQueue:
     def is_full(self):
         return len(self.queue) == self.capacity
 
-    def insert_with_priority(self, item, priority):
+    def enqueue(self, item, priority):
         if not self.is_full():
             self.queue.append((item, priority))
             print(f"Елемент {item} з пріорітетом {priority} додано до черги")
-            self.queue.sort(key=lambda x: x[1])
-        else:
-            print("Черга заповнена")
 
-    def pull_highest_priority_element(self):
+    def dequeue(self):
         if not self.is_empty():
             item, priority = self.queue.pop(0)
             print(f"Елемент {item} з пріорітетом {priority} вилучено з черги")
-        else:
-            print("Черга порожня")
-
-    def peek(self):
-        if not self.is_empty():
-            item, priority = self.queue[0]
-            print(f"Найбільший за пріорітетом {priority} елемент {item}")
-        else:
-            print("Черга порожня")
 
     def show(self):
         if not self.is_empty():
@@ -77,7 +59,7 @@ def main():
             priority = int(input("Введіть пріоритет: "))
             q.insert_with_priority(item, priority)
         elif choice == "2":
-            q.pull_highest_priority_element()
+            enqueue()
         elif choice == "3":
             q.peek()
         elif choice == "4":
