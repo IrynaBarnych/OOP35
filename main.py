@@ -50,3 +50,43 @@ class Dodatok:
         else:
             print(f"Користувача з логіном {login} не знайдено.")
 
+def main():
+    user_db = Dodatok()
+
+    while True:
+        print("\nОберіть операцію:")
+        print("1. Додати нового користувача")
+        print("2. Видалити існуючого користувача")
+        print("3. Перевірити, чи існує такий користувач")
+        print("4. Змінити логін існуючого користувача")
+        print("5. Змінити пароль існуючого користувача")
+        print("0. Вийти")
+
+        choice = input("Ваш вибір: ")
+
+        if choice == "1":
+            login = input("Введіть логін: ")
+            password = input("Введіть пароль: ")
+            user_db.add_user(login, password)
+        elif choice == "2":
+            login = input("Введіть логін користувача, якого потрібно видалити: ")
+            user_db.remove_user(login)
+        elif choice == "3":
+            login = input("Введіть логін користувача для перевірки: ")
+            user_db.check_user(login)
+        elif choice == "4":
+            old_login = input("Введіть старий логін користувача: ")
+            new_login = input("Введіть новий логін користувача: ")
+            user_db.change_login(old_login, new_login)
+        elif choice == "5":
+            login = input("Введіть логін користувача, пароль якого потрібно змінити: ")
+            new_password = input("Введіть новий пароль: ")
+            user_db.change_password(login, new_password)
+        elif choice == "0":
+            print("Дякую за використання додатку. До побачення!")
+            break
+        else:
+            print("Невірний вибір. Спробуйте ще раз.")
+
+if __name__ == "__main__":
+    main()
