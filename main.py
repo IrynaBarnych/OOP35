@@ -57,3 +57,5 @@ server.add_request("user3", 3)
 
 server.process_requests()
 server.display_stats()
+
+# gpt-чат порекомендував додати бібліотеки
