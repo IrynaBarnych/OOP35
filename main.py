@@ -76,17 +76,14 @@ class SeaBoatSimulator:
         else:
             print(f"{self.boat.boat_name} прибув на причал, але пасажирів немає.")
 
-# Приклад використання
 pier_queue = PierQueue(10)
 
-# Симулюємо прибуття пасажирів
 for i in range(1, 11):
     passenger = PierPassenger(f"Пасажир {i}")
     pier_queue.insert_passenger(passenger)
 
 pier_queue.show()
 
-# Симулюємо прибуття і відправлення катерів
 boat1 = SeaBoat("Катер A", "end")
 simulator1 = SeaBoatSimulator(pier_queue, "Катер A", "end")
 simulator1.simulate_arrival()
