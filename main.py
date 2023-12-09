@@ -9,7 +9,6 @@
 # На старті додатка відобразіть меню, в якому користувач може вибрати необхідну операцію.
 
 
-
 class PriorityQueue:
     def __init__(self, capacity):
         self.capacity = capacity
@@ -21,51 +20,56 @@ class PriorityQueue:
     def is_full(self):
         return len(self.queue) == self.capacity
 
-    def enqueue(self, item, priority):
+    def enqueue(self, item):
         if not self.is_full():
-            self.queue.append((item, priority))
-            print(f"Елемент {item} з пріорітетом {priority} додано до черги")
+            self.queue.append(item)
+            print(f"Елемент {item} додано до черги")
+        else:
+            print("Черга вже заповнена. Неможливо додати новий елемент.")
 
     def dequeue(self):
         if not self.is_empty():
-            item, priority = self.queue.pop(0)
-            print(f"Елемент {item} з пріорітетом {priority} вилучено з черги")
+            item = self.queue.pop(0)
+            print(f"Елемент {item} вилучено з черги")
+        else:
+            print("Черга порожня. Неможливо вилучити елемент.")
 
     def show(self):
         if not self.is_empty():
-            print("Елементи в черзі")
-            for item, priority in self.queue:
-                print(f"Елемент {item} з {priority}-пріорітетом")
+            print("Елементи в черзі:")
+            for item in self.queue:
+                print(f"Елемент {item}")
         else:
             print("Черга порожня")
 
-# Додано меню
 def main():
     capacity = int(input("Введіть максимальну кількість елементів у черзі: "))
     q = PriorityQueue(capacity)
 
     while True:
         print("\nОберіть операцію:")
-        print("1. Додати елемент з пріоритетом")
-        print("2. Вилучити елемент з найвищим пріоритетом")
-        print("3. Переглянути найбільший за пріоритетом елемент")
-        print("4. Переглянути всі елементи черги")
+        print("1. Додати новий елемент до черги")
+        print("2. Видалити елемент з черги")
+        print("3. Перевірити, чи черга порожня")
+        print("4. Перевірити, чи черга заповнена")
+        print("5. Відобразити всі елементи черги")
         print("0. Вийти")
 
         choice = input("Ваш вибір: ")
 
         if choice == "1":
             item = input("Введіть елемент: ")
-            priority = int(input("Введіть пріоритет: "))
-            q.insert_with_priority(item, priority)
+            q.enqueue(item)
         elif choice == "2":
-            enqueue()
+            q.dequeue()
         elif choice == "3":
-            q.peek()
+            print(f"Черга порожня: {q.is_empty()}")
         elif choice == "4":
+            print(f"Черга заповнена: {q.is_full()}")
+        elif choice == "5":
             q.show()
         elif choice == "0":
-            print("Дякую за використання черги з пріоритетами. До побачення!")
+            print("Дякую за використання черги. До побачення!")
             break
         else:
             print("Невірний вибір. Спробуйте ще раз.")
